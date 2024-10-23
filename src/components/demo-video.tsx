@@ -17,7 +17,7 @@ const VideoPlayer = () => {
           loading="lazy"
           allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
           allowFullScreen
-          className="w-full h-full rounded-xl aspect-[16/8]"
+          className="w-full h-full rounded-xl aspect-[16/8] bg-black"
         />
       ) : (
         <>
