@@ -88,90 +88,99 @@ export const Prices = async () => {
   ];
 
   return (
-    <section id="pricing" className="landing-container py-10">
-      <SectionTitle
-        title="Comece agora mesmo"
-        description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
+    <section id="pricing" className="landing-containerpy-10 relative">
+      <Image
+        src="/pricing-section-bg.svg"
+        width={1280}
+        height={720}
+        role="presentation"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
 
-      <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
-        {prices.map((pricing) => {
-          return (
-            <div
-              key={pricing.platform}
-              className={cn(
-                pricing.highlighted &&
-                  "bg-gradient-to-b from-primary to-primary/0 p-1 rounded-2xl"
-              )}
-            >
-              {pricing.highlighted && (
-                <p className="w-full p-2 text-center font-bold">
-                  PROMOÇÃO DE LANÇAMENTO
-                </p>
-              )}
+      <div className="landing-container relative z-[2]">
+        <SectionTitle
+          title="Comece agora mesmo"
+          description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
+        />
+
+        <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
+          {prices.map((pricing) => {
+            return (
               <div
+                key={pricing.platform}
                 className={cn(
-                  "w-full py-10 px-8 rounded-2xl bg-primary-800 relative min-h-[200px] flex flex-col items-center text-center",
-                  !pricing.highlighted && "border border-primary/20"
+                  pricing.highlighted &&
+                    "bg-gradient-to-b from-primary to-primary/0 p-1 rounded-2xl"
                 )}
               >
-                <Image
-                  src="/pricing-bg.svg"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  width={370}
-                  height={400}
-                  role="presentation"
-                  alt=""
-                />
-
-                <Image
-                  src={pricing.logo.src}
-                  width={pricing.logo.width}
-                  height={pricing.logo.height}
-                  alt={`Logo da plataforma ${pricing.platform}`}
-                />
-
-                <p className="mt-6 mb-4">{pricing.description}</p>
-
-                <div className="z-[2]">
-                  {pricing?.regularPrice &&
-                    pricing.regularPrice !== pricing.price && (
-                      <span className="block line-through text-xl text-text-secondary/50">
-                        {formatPrice(pricing.regularPrice)}
-                      </span>
-                    )}
-                  <p
-                    className={cn(
-                      "font-bold text-6xl mt-1",
-                      !pricing.highlighted && "text-primary"
-                    )}
-                  >
-                    {formatPrice(pricing.price)}
+                {pricing.highlighted && (
+                  <p className="w-full p-2 text-center font-bold">
+                    PROMOÇÃO DE LANÇAMENTO
                   </p>
-                  {!!pricing?.priceDescription && (
-                    <p className="text-text-secondary text-sm mt-2">
-                      {pricing.priceDescription}
-                    </p>
+                )}
+                <div
+                  className={cn(
+                    "w-full py-10 px-8 rounded-2xl bg-primary-800 relative min-h-[200px] flex flex-col items-center text-center",
+                    !pricing.highlighted && "border border-primary/20"
                   )}
+                >
+                  <Image
+                    src="/pricing-bg.svg"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    width={370}
+                    height={400}
+                    role="presentation"
+                    alt=""
+                  />
 
-                  <a
-                    href={pricing.checkoutUrl}
-                  >
-                    <Button
+                  <Image
+                    src={pricing.logo.src}
+                    width={pricing.logo.width}
+                    height={pricing.logo.height}
+                    alt={`Logo da plataforma ${pricing.platform}`}
+                  />
+
+                  <p className="mt-6 mb-4">{pricing.description}</p>
+
+                  <div className="z-[2]">
+                    {pricing?.regularPrice &&
+                      pricing.regularPrice !== pricing.price && (
+                        <span className="block line-through text-xl text-text-secondary/50">
+                          {formatPrice(pricing.regularPrice)}
+                        </span>
+                      )}
+                    <p
                       className={cn(
-                        "justify-center text-xl font-bold mt-6 mx-auto px-10",
-                        !pricing.highlighted &&
-                          "border-primary bg-transparent text-primary border hover:bg-primary hover:text-white"
+                        "font-bold text-6xl mt-1",
+                        !pricing.highlighted && "text-primary"
                       )}
                     >
-                      Comprar agora
-                    </Button>
-                  </a>
+                      {formatPrice(pricing.price)}
+                    </p>
+                    {!!pricing?.priceDescription && (
+                      <p className="text-text-secondary text-sm mt-2">
+                        {pricing.priceDescription}
+                      </p>
+                    )}
+
+                    <a href={pricing.checkoutUrl}>
+                      <Button
+                        className={cn(
+                          "justify-center text-xl font-bold mt-6 mx-auto px-10",
+                          !pricing.highlighted &&
+                            "border-primary bg-transparent text-primary border hover:bg-primary hover:text-white"
+                        )}
+                      >
+                        Comprar agora
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
