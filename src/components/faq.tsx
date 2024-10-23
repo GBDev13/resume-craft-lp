@@ -30,13 +30,13 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="landing-container py-10">
+    <section className="py-10">
       <SectionTitle
         title="Perguntas Frequentes"
         description="Tire suas dúvidas sobre o curso"
       />
 
-      <Accordion.Root type="multiple" className="w-full flex flex-col gap-4">
+      <Accordion.Root type="multiple" className="landing-container w-full flex flex-col gap-4">
         {questions.map((question, questionIndex) => {
           return (
             <Accordion.Item
@@ -44,15 +44,15 @@ export const FAQ = () => {
               value={question.question}
               className="bg-primary-800 border border-primary-700 rounded-xl overflow-hidden"
             >
-              <Accordion.Trigger className="group flex items-center justify-between w-full p-6">
-                <h5 className="font-semibold text-xl">{question.question}</h5>
+              <Accordion.Trigger className="group flex items-center justify-between w-full p-4 sm:p-6 gap-4">
+                <h5 className="font-semibold sm:text-xl text-left">{question.question}</h5>
 
                 <Button className="p-2">
                   <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
                 </Button>
               </Accordion.Trigger>
               <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
-                <div className="p-6 pt-0 flex flex-col gap-2">
+                <div className="p-4 sm:p-6 pt-0 flex flex-col gap-2">
                   <p>{question.answer}</p>
                 </div>
               </Accordion.Content>

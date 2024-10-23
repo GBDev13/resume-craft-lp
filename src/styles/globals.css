@@ -8,6 +8,18 @@
   }
 
   .landing-container {
-    @apply w-full max-w-[1260px] mx-auto
+    @apply w-full max-w-[1260px] mx-auto px-4;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-800;
   }
 }

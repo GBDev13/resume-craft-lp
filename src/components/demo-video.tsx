@@ -10,9 +10,9 @@ export const DemoVideo = () => {
 
   return (
     <section className="landing-container pt-4 pb-10">
-      <div className="flex items-center gap-6 mb-10">
+      <div className="flex items-center gap-2 sm:gap-6 mb-6 sm:mb-10">
         <div className="flex-1 bg-leftLine h-px" />
-        <h2 className="font-bold text-3xl text-center">
+        <h2 className="font-bold text-xl sm:text-3xl text-center">
           Veja o <span className="text-primary">ResumeCraft</span> em ação
         </h2>
         <div className="flex-1 bg-rightLine h-px" />
@@ -34,12 +34,12 @@ export const DemoVideo = () => {
             <Image
               src="/demo-thumbnail.avif"
               alt="Thumbnail do vídeo de apresentação do projeto final."
-              className="w-full h-full object-cover aspect-[16/8] rounded-xl group-hover:brightness-75 transition-all"
+              className="w-full h-full object-cover aspect-video sm:aspect-[16/8] rounded-xl group-hover:brightness-75 transition-all"
               width={1280}
               height={720}
             />
 
-            <Button className="absolute z-[2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-primary text-lg hover:text-white">
+            <Button className="absolute z-[2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-primary text-sm sm:text-lg hover:text-white whitespace-nowrap">
               Assistir Demonstração
               <LuPlay />
             </Button>

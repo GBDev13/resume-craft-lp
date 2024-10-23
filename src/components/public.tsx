@@ -57,19 +57,19 @@ export const Public = () => {
   ];
   
   return (
-    <section className="landing-container py-10">
+    <section className="py-10">
       <SectionTitle
         title="Para Quem é Este Curso?"
         description="Descubra se isso é o que você procura"
       />
 
-      <div className="w-full grid grid-cols-2 gap-10">
+      <div className="landing-container w-full grid md:grid-cols-2 gap-4 lg:gap-10">
         {sections.map((section, index) => (
           <div
             key={`public-section-${index}`}
-            className="p-10 rounded-xl bg-primary-800 border-primary-700"
+            className="p-3 sm:p-6 lg:p-10 rounded-xl bg-primary-800 border-primary-700"
           >
-            <h3 className="font-bold text-3xl border-b border-text-secondary/30 pb-6 mb-6">{section.title}</h3>
+            <h3 className="font-bold text-center md:text-left text-xl sm:text-2xl lg:text-3xl border-b border-text-secondary/30 pb-6 mb-6">{section.title}</h3>
             <ul className="flex flex-col gap-4">
               {section.items.map((item, itemIndex) => {
                 const Icon = index === 0 ? HiCheckCircle : HiXCircle;
@@ -84,8 +84,8 @@ export const Public = () => {
                       index > 0 && "text-red-500"
                     )} />
                     <div>
-                      <h4 className="font-semibold text-lg mb-1">{item.label}</h4>
-                      <p className="text-text-secondary text-sm">{item.description}</p>
+                      <h4 className="font-semibold sm:text-lg mb-1">{item.label}</h4>
+                      <p className="text-text-secondary text-xs sm:text-sm">{item.description}</p>
                     </div>
                   </li>
                 )

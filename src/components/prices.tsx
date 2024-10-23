@@ -88,7 +88,7 @@ export const Prices = async () => {
   ];
 
   return (
-    <section id="pricing" className="landing-containerpy-10 relative">
+    <section id="pricing" className="py-10 relative">
       <Image
         src="/pricing-section-bg.svg"
         width={1280}
@@ -98,12 +98,12 @@ export const Prices = async () => {
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
 
-      <div className="landing-container relative z-[2]">
-        <SectionTitle
-          title="Comece agora mesmo"
-          description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
-        />
+      <SectionTitle
+        title="Comece agora mesmo"
+        description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
+      />
 
+      <div className="landing-container relative z-[2]">
         <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
           {prices.map((pricing) => {
             return (
@@ -141,7 +141,7 @@ export const Prices = async () => {
                     alt={`Logo da plataforma ${pricing.platform}`}
                   />
 
-                  <p className="mt-6 mb-4">{pricing.description}</p>
+                  <p className="mt-6 mb-4 text-xs sm:text-base">{pricing.description}</p>
 
                   <div className="z-[2]">
                     {pricing?.regularPrice &&
@@ -152,7 +152,7 @@ export const Prices = async () => {
                       )}
                     <p
                       className={cn(
-                        "font-bold text-6xl mt-1",
+                        "font-bold text-5xl sm:text-6xl mt-1",
                         !pricing.highlighted && "text-primary"
                       )}
                     >
@@ -167,7 +167,7 @@ export const Prices = async () => {
                     <a href={pricing.checkoutUrl}>
                       <Button
                         className={cn(
-                          "justify-center text-xl font-bold mt-6 mx-auto px-10",
+                          "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10",
                           !pricing.highlighted &&
                             "border-primary bg-transparent text-primary border hover:bg-primary hover:text-white"
                         )}

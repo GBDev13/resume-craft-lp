@@ -37,13 +37,13 @@ export const Features = () => {
   ];
 
   return (
-    <section className="landing-container py-10">
+    <section className="py-10">
       <SectionTitle
         title="O que você vai construir?"
         description="Durante o curso, você desenvolverá um projeto completo com as seguintes funcionalidades"
       />
 
-      <div className="w-full grid grid-cols-3 gap-5">
+      <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {features.map((feature) => (
           <div className="w-full p-6 rounded-xl bg-primary-800 border border-primary-700 relative hover:border-primary transition-all">
             <div className="bg-gradient-to-br from-primary/10 to-primary/30 w-10 h-10 rounded flex items-center justify-center">

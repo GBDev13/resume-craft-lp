@@ -3,7 +3,12 @@ import { GraphQLClient } from "graphql-request";
 import * as Accordion from "@radix-ui/react-accordion";
 import { formatDuration } from "@/utils/format";
 import { Button } from "./button";
-import { TbBooks, TbChevronDown, TbClockCode, TbUserScreen } from "react-icons/tb";
+import {
+  TbBooks,
+  TbChevronDown,
+  TbClockCode,
+  TbUserScreen,
+} from "react-icons/tb";
 
 type Course = {
   id: string;
@@ -64,78 +69,91 @@ export const Structure = async () => {
     },
     {
       label: "Aulas",
-      value: course.modules.reduce(
-        (acc, mod) => acc + mod.lessons.length,
-        0
-      ),
+      value: course.modules.reduce((acc, mod) => acc + mod.lessons.length, 0),
       icon: TbUserScreen,
     },
     {
       label: "Horas de conteúdo",
       value: totalDurationInHours,
-      icon: TbClockCode
-    }
+      icon: TbClockCode,
+    },
   ];
 
   return (
-    <section className="landing-container py-10">
+    <section className="py-10">
       <SectionTitle
         title="Conteúdo do Curso"
         description="Tenha uma visão geral da estrutura dos módulos e aulas"
       />
 
-      <Accordion.Root type="multiple" className="w-full flex flex-col gap-4">
-        {course.modules.map((mod, modIndex) => {
-          const totalDuration = mod.lessons.reduce(
-            (acc, lesson) => acc + lesson.durationInSeconds,
-            0
-          );
+      <div className="landing-container">
+        <Accordion.Root type="multiple" className="w-full flex flex-col gap-4">
+          {course.modules.map((mod, modIndex) => {
+            const totalDuration = mod.lessons.reduce(
+              (acc, lesson) => acc + lesson.durationInSeconds,
+              0
+            );
 
-          return (
-            <Accordion.Item
-              key={`module-${mod.id}`}
-              value={mod.id}
-              className="bg-primary-800 border border-primary-700 rounded-xl overflow-hidden"
-            >
-              <Accordion.Trigger className="group flex items-center justify-between w-full p-6">
-                <h5 className="font-semibold text-xl">
-                  <span className="text-primary mr-2">
-                    {String(modIndex + 1).padStart(2, "0")}
-                  </span>
-                  {mod.title}
-                </h5>
+            return (
+              <Accordion.Item
+                key={`module-${mod.id}`}
+                value={mod.id}
+                className="bg-primary-800 border border-primary-700 rounded-xl overflow-hidden"
+              >
+                <Accordion.Trigger className="group flex items-center justify-between w-full p-4 sm:p-6 flex-col sm-mobile:flex-row">
+                  <div className="w-full flex items-center gap-2">
+                    <h5 className="font-semibold sm:text-xl text-left">
+                      <span className="text-primary mr-2 inline">
+                        {String(modIndex + 1).padStart(2, "0")}
+                      </span>
+                      {mod.title}
+                      <span className="text-xs text-text-secondary inline sm-mobile:hidden ml-2">
+                        ({formatDuration(totalDuration * 1000)})
+                      </span>
+                    </h5>
 
-                <div className="flex items-center gap-4">
-                  <p className="text-text-secondary">
-                    {formatDuration(totalDuration * 1000)}
-                  </p>
-                  <Button className="p-2">
-                    <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
-                  </Button>
-                </div>
-              </Accordion.Trigger>
-              <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
-                <div className="p-6 pt-0 flex flex-col gap-2">
-                  {mod.lessons.map((lesson) => (
-                    <div key={`lesson-${lesson.id}`} className="w-full flex items-center justify-between">
-                      <h6>{lesson.title}</h6>
-                      <p className="text-text-secondary">{formatDuration(lesson.durationInSeconds * 1000)}</p>
-                    </div>
-                  ))}
-                </div>
-              </Accordion.Content>
-            </Accordion.Item>
-          );
-        })}
-      </Accordion.Root>
+                    <Button className="p-2 flex sm-mobile:hidden ml-auto">
+                      <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
+                    </Button>
+                  </div>
 
-      <div className="bg-primary-800 mt-4 border border-primary-700 rounded-xl p-6 flex items-center justify-center gap-6 flex-wrap">
-        {infos.map((info) => (
-          <p className="text-xl flex items-center gap-2">
-            <info.icon className="w-6 h-6 text-primary" />
-            <span className="font-bold">{info.value}</span> {info.label}
-          </p>
-        ))}
+                  <div className="items-center gap-4 hidden sm-mobile:flex">
+                    <p className="text-text-secondary">
+                      {formatDuration(totalDuration * 1000)}
+                    </p>
+                    <Button className="p-2">
+                      <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
+                    </Button>
+                  </div>
+                </Accordion.Trigger>
+                <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
+                  <div className="p-4 sm:p-6 pt-0 flex flex-col gap-2">
+                    {mod.lessons.map((lesson) => (
+                      <div
+                        key={`lesson-${lesson.id}`}
+                        className="w-full flex items-center justify-between gap-2"
+                      >
+                        <h6 className="text-sm sm:text-base">{lesson.title}</h6>
+                        <p className="text-text-secondary text-xs sm:text-base">
+                          {formatDuration(lesson.durationInSeconds * 1000)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </Accordion.Content>
+              </Accordion.Item>
+            );
+          })}
+        </Accordion.Root>
+
+        <div className="bg-primary-800 mt-4 border border-primary-700 rounded-xl p-4 sm:p-6 flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
+          {infos.map((info) => (
+            <p className="text-sm sm:text-xl flex items-center gap-2">
+              <info.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
+              <span className="font-bold">{info.value}</span> {info.label}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );

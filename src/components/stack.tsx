@@ -5,14 +5,14 @@ import { TbArrowUpRight } from "react-icons/tb";
 
 export const Stack = () => {
   return (
-    <section className="landing-container py-10">
+    <section className="py-10">
       <SectionTitle
         title="Stack Moderna e Tecnologias de Ponta"
         description="Aprenda com as ferramentas mais utilizadas no mercado e mantenha-se sempre atualizado"
-        titleClassName="px-14"
+        titleClassName="sm:px-14"
       />
 
-      <div className="w-full grid grid-cols-4 gap-5">
+      <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {techs.map((tech) => (
           <a href={tech.url} target="_blank" className="group w-full p-6 rounded-xl bg-gradient-to-br from-primary-800 to-background border border-primary-700/70 hover:border-primary/30 transition-all">
             <div className="flex items-center justify-between mb-4">
