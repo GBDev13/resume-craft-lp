@@ -1,8 +1,15 @@
 import Image from "next/image";
+import { Motion } from "./motion";
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-10 bg-primary-800 mt-10 sm:mt-20">
+    <Motion
+      as="footer"
+      className="w-full py-10 bg-primary-800 mt-10 sm:mt-20"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="landing-container flex items-center justify-between flex-col sm:flex-row gap-4">
         <a href="https://devbygb.com" target="_blank">
           <Image
@@ -18,6 +25,6 @@ export const Footer = () => {
           {new Date().getFullYear()} - Todos os direitos reservados
         </p>
       </div>
-    </footer>
+    </Motion>
   );
 };

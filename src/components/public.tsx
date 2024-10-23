@@ -1,6 +1,7 @@
 import { HiCheckCircle, HiXCircle } from "react-icons/hi";
 import { SectionTitle } from "./section-title"
 import { cn } from "@/utils/tailwind";
+import { Motion } from "./motion";
 
 export const Public = () => {
   const sections = [
@@ -65,9 +66,13 @@ export const Public = () => {
 
       <div className="landing-container w-full grid md:grid-cols-2 gap-4 lg:gap-10">
         {sections.map((section, index) => (
-          <div
+          <Motion
             key={`public-section-${index}`}
             className="p-3 sm:p-6 lg:p-10 rounded-xl bg-primary-800 border-primary-700"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.2 }}
           >
             <h3 className="font-bold text-center md:text-left text-xl sm:text-2xl lg:text-3xl border-b border-text-secondary/30 pb-6 mb-6">{section.title}</h3>
             <ul className="flex flex-col gap-4">
@@ -75,9 +80,14 @@ export const Public = () => {
                 const Icon = index === 0 ? HiCheckCircle : HiXCircle;
 
                 return (
-                  <li
+                  <Motion
                     key={`public-item-${itemIndex}`}
+                    as="li"
                     className="flex gap-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2, delay: 0.2 * itemIndex }}
                   > 
                     <Icon className={cn(
                       "text-green-500 min-w-5 w-5 h-5 mt-1",
@@ -87,11 +97,11 @@ export const Public = () => {
                       <h4 className="font-semibold sm:text-lg mb-1">{item.label}</h4>
                       <p className="text-text-secondary text-xs sm:text-sm">{item.description}</p>
                     </div>
-                  </li>
+                  </Motion>
                 )
               })}
             </ul>
-          </div>
+          </Motion>
         ))}
       </div>
     </section>

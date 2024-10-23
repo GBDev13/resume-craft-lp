@@ -6,6 +6,7 @@ import { cn } from "@/utils/tailwind";
 import { calculateInstallmentOptions } from "@/utils/functions";
 import { Button } from "./button";
 import { CHECKOUT_URLS } from "@/constants";
+import { Motion } from "./motion";
 
 type CoursePrices = {
   pixPrice: number;
@@ -105,14 +106,18 @@ export const Prices = async () => {
 
       <div className="landing-container relative z-[2]">
         <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
-          {prices.map((pricing) => {
+          {prices.map((pricing, index) => {
             return (
-              <div
+              <Motion
                 key={pricing.platform}
                 className={cn(
                   pricing.highlighted &&
                     "bg-gradient-to-b from-primary to-primary/0 p-1 rounded-2xl"
                 )}
+                initial={{ opacity: 0, y: -20, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                transition={{ duration: 0.4, delay: 0.2 * index }}
               >
                 {pricing.highlighted && (
                   <p className="w-full p-2 text-center font-bold">
@@ -177,7 +182,7 @@ export const Prices = async () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </Motion>
             );
           })}
         </div>

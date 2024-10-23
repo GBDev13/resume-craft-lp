@@ -9,6 +9,7 @@ import {
   TbClockCode,
   TbUserScreen,
 } from "react-icons/tb";
+import { Motion } from "./motion";
 
 type Course = {
   id: string;
@@ -86,7 +87,13 @@ export const Structure = async () => {
         description="Tenha uma visão geral da estrutura dos módulos e aulas"
       />
 
-      <div className="landing-container">
+      <Motion
+        className="landing-container"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -50 }}
+        transition={{ duration: 0.4 }}
+      >
         <Accordion.Root type="multiple" className="w-full flex flex-col gap-4">
           {course.modules.map((mod, modIndex) => {
             const totalDuration = mod.lessons.reduce(
@@ -100,30 +107,32 @@ export const Structure = async () => {
                 value={mod.id}
                 className="bg-primary-800 border border-primary-700 rounded-xl overflow-hidden"
               >
-                <Accordion.Trigger className="group flex items-center justify-between w-full p-4 sm:p-6 flex-col sm-mobile:flex-row">
-                  <div className="w-full flex items-center gap-2">
-                    <h5 className="font-semibold sm:text-xl text-left">
-                      <span className="text-primary mr-2 inline">
-                        {String(modIndex + 1).padStart(2, "0")}
-                      </span>
-                      {mod.title}
-                      <span className="text-xs text-text-secondary inline sm-mobile:hidden ml-2">
-                        ({formatDuration(totalDuration * 1000)})
-                      </span>
-                    </h5>
+                <Accordion.Trigger asChild className="group">
+                  <div className="cursor-pointer flex items-center justify-between w-full p-4 sm:p-6 flex-col sm-mobile:flex-row">
+                    <div className="w-full flex items-center gap-2">
+                      <h5 className="font-semibold sm:text-xl text-left">
+                        <span className="text-primary mr-2 inline">
+                          {String(modIndex + 1).padStart(2, "0")}
+                        </span>
+                        {mod.title}
+                        <span className="text-xs text-text-secondary inline sm-mobile:hidden ml-2">
+                          ({formatDuration(totalDuration * 1000)})
+                        </span>
+                      </h5>
 
-                    <Button className="p-2 flex sm-mobile:hidden ml-auto">
-                      <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
-                    </Button>
-                  </div>
+                      <Button className="p-2 flex sm-mobile:hidden ml-auto">
+                        <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
+                      </Button>
+                    </div>
 
-                  <div className="items-center gap-4 hidden sm-mobile:flex">
-                    <p className="text-text-secondary">
-                      {formatDuration(totalDuration * 1000)}
-                    </p>
-                    <Button className="p-2">
-                      <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
-                    </Button>
+                    <div className="items-center gap-4 hidden sm-mobile:flex">
+                      <p className="text-text-secondary">
+                        {formatDuration(totalDuration * 1000)}
+                      </p>
+                      <Button className="p-2">
+                        <TbChevronDown className="transition-all group-data-[state=open]:rotate-180" />
+                      </Button>
+                    </div>
                   </div>
                 </Accordion.Trigger>
                 <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
@@ -154,7 +163,7 @@ export const Structure = async () => {
             </p>
           ))}
         </div>
-      </div>
+      </Motion>
     </section>
   );
 };

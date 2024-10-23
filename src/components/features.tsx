@@ -1,6 +1,7 @@
 import { TbCash, TbDatabase, TbFileText, TbHandClick, TbRobotFace, TbShieldLock } from "react-icons/tb";
 import { SectionTitle } from "./section-title";
 import Image from "next/image";
+import { Motion } from "./motion";
 
 export const Features = () => {
   const features = [
@@ -44,8 +45,14 @@ export const Features = () => {
       />
 
       <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {features.map((feature) => (
-          <div className="w-full p-6 rounded-xl bg-primary-800 border border-primary-700 relative hover:border-primary transition-all">
+        {features.map((feature, index) => (
+          <Motion
+            className="w-full p-6 rounded-xl bg-primary-800 border border-primary-700 relative hover:border-primary transition-colors"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, delay: 0.1 * index }}
+          >
             <div className="bg-gradient-to-br from-primary/10 to-primary/30 w-10 h-10 rounded flex items-center justify-center">
               <feature.icon className="w-6 h-6 text-primary" />
             </div>
@@ -65,7 +72,7 @@ export const Features = () => {
               height={230}
               className="absolute right-0 top-0 w-[80%] h-full"
             />
-          </div>
+          </Motion>
         ))}
       </div>
     </section>

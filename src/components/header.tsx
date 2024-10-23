@@ -4,6 +4,7 @@ import Image from "next/image";
 import { StartButton } from "./hero/start-button";
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/utils/tailwind";
+import { Motion } from "./motion";
 
 export const Header = () => {
   const [shouldShowBackground, setShouldShowBackground] = useState(false);
@@ -29,7 +30,12 @@ export const Header = () => {
       "fixed top-0 left-0 right-0 w-full pointer-events-none py-6 sm:py-10 flex items-center z-10 transition-all",
       shouldShowBackground && "bg-background/50 backdrop-blur-md py-4 sm:py-6"
     )}>
-      <div className="landing-container flex items-center justify-between pointer-events-auto px-6">
+      <Motion
+        className="landing-container flex items-center justify-between pointer-events-auto px-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <Image
           src="/devbygb.svg"
           width={200}
@@ -40,7 +46,7 @@ export const Header = () => {
         />
 
         <StartButton withIcon={false} className="m-0 text-sm sm:text-base py-2 px-3 sm:px-4" />
-      </div>
+      </Motion>
     </header>
   );
 };

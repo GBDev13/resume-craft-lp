@@ -19,7 +19,7 @@ export const StartButton = ({ className, withIcon = true, ...props }: StartButto
   };
 
   return (
-    <Button {...props} className={cn("text-xl mt-6", className)} onClick={handleStart}>
+    <Button {...props} className={cn("text-xl", className)} onClick={handleStart}>
       Comece Agora
       {withIcon && <LuPlay />}
     </Button>

@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import { cn } from "@/utils/tailwind";
 import Image from "next/image";
-import { ComponentProps, useEffect, useRef } from "react"
+import { ComponentProps, useEffect, useRef } from "react";
+import { Motion } from "../motion";
 
 type RadialStarsProps = ComponentProps<"div">;
 
@@ -14,13 +15,16 @@ type Particle = {
   color: string;
 };
 
-export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
+export const RadialStars = ({ className }: RadialStarsProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
 
-  const colors = ['#ffff', '#1A4FFF', '#8fa9ff'];
+  const colors = ["#ffff", "#1A4FFF", "#8fa9ff"];
 
-  const createParticle = (canvasWidth: number, canvasHeight: number): Particle => ({
+  const createParticle = (
+    canvasWidth: number,
+    canvasHeight: number
+  ): Particle => ({
     x: Math.random() * canvasWidth, // Posição X aleatória
     y: Math.random() * (canvasHeight * 0.8), // Posição Y aleatória na parte superior do canvas (com deslocamento de 20 pixels)
     radius: Math.random() * 0.5 + 1, // Tamanho aleatório (entre 2 e 4)
@@ -28,7 +32,11 @@ export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
     color: colors[Math.floor(Math.random() * colors.length)],
   });
 
-  const drawParticles = (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number) => {
+  const drawParticles = (
+    ctx: CanvasRenderingContext2D,
+    canvasWidth: number,
+    canvasHeight: number
+  ) => {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     particlesRef.current.forEach((particle) => {
@@ -41,10 +49,16 @@ export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
       ctx.closePath();
     });
 
-    particlesRef.current = particlesRef.current.filter((p) => p.y + p.radius > 0);
+    particlesRef.current = particlesRef.current.filter(
+      (p) => p.y + p.radius > 0
+    );
   };
 
-  const animate = (ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number) => {
+  const animate = (
+    ctx: CanvasRenderingContext2D,
+    canvasWidth: number,
+    canvasHeight: number
+  ) => {
     drawParticles(ctx, canvasWidth, canvasHeight);
 
     if (particlesRef.current.length < 50) {
@@ -58,7 +72,7 @@ export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
@@ -70,16 +84,22 @@ export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div {...props} className={cn("w-[735px] h-[275px]", className)}>
+    <Motion
+      className={cn("w-[735px] h-[275px]", className)}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Image
         src="/radial.svg"
         width={735}
@@ -92,6 +112,6 @@ export const RadialStars = ({ className, ...props }: RadialStarsProps) => {
         ref={canvasRef}
         className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-full z-[2]"
       />
-    </div>
-  )
-}
+    </Motion>
+  );
+};

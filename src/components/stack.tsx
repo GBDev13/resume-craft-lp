@@ -2,6 +2,7 @@ import { techs } from "@/constants";
 import { SectionTitle } from "./section-title";
 import { Button } from "./button";
 import { TbArrowUpRight } from "react-icons/tb";
+import { Motion } from "./motion";
 
 export const Stack = () => {
   return (
@@ -13,8 +14,18 @@ export const Stack = () => {
       />
 
       <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {techs.map((tech) => (
-          <a href={tech.url} target="_blank" className="group w-full p-6 rounded-xl bg-gradient-to-br from-primary-800 to-background border border-primary-700/70 hover:border-primary/30 transition-all">
+        {techs.map((tech, index) => (
+          <Motion
+            as="a"
+            // @ts-ignore
+            href={tech.url}
+            target="_blank"
+            className="group w-full p-6 rounded-xl bg-gradient-to-br from-primary-800 to-background border border-primary-700/70 hover:border-primary/30 transition-colors"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2, delay: 0.1 * index }}
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="bg-primary-700 w-8 h-8 rounded flex items-center justify-center">
@@ -29,8 +40,10 @@ export const Stack = () => {
               </Button>
             </div>
 
-            <span className="text-text-secondary text-sm">{tech.description}</span>
-          </a>
+            <span className="text-text-secondary text-sm">
+              {tech.description}
+            </span>
+          </Motion>
         ))}
       </div>
     </section>
