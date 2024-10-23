@@ -48,7 +48,9 @@ export const Hero = () => {
         />
       </Motion>
 
-      <RadialStars className="absolute left-1/2 -translate-x-1/2 top-[80px] z-[3]" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-[80px] z-[3] max-w-[560px] sm:max-w-full flex items-center justify-center">
+        <RadialStars />
+      </div>
 
       <Motion
         className="absolute left-0 right-0 bottom-10 z-[2]"

@@ -2,7 +2,7 @@
 
 import { cn } from "@/utils/tailwind";
 import Image from "next/image";
-import { ComponentProps, useEffect, useRef } from "react";
+import { ComponentProps, useCallback, useEffect, useRef } from "react";
 import { Motion } from "../motion";
 
 type RadialStarsProps = ComponentProps<"div">;
@@ -15,13 +15,13 @@ type Particle = {
   color: string;
 };
 
+const colors = ["#ffff", "#1A4FFF", "#8fa9ff"];
+
 export const RadialStars = ({ className }: RadialStarsProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particlesRef = useRef<Particle[]>([]);
 
-  const colors = ["#ffff", "#1A4FFF", "#8fa9ff"];
-
-  const createParticle = (
+  const createParticle = useCallback((
     canvasWidth: number,
     canvasHeight: number
   ): Particle => ({
@@ -30,7 +30,7 @@ export const RadialStars = ({ className }: RadialStarsProps) => {
     radius: Math.random() * 0.5 + 1, // Tamanho aleatório (entre 2 e 4)
     speed: Math.random() * 0.25 + 0.15, // Velocidade mais lenta (entre 0.1 e 0.3)
     color: colors[Math.floor(Math.random() * colors.length)],
-  });
+  }), []);
 
   const drawParticles = (
     ctx: CanvasRenderingContext2D,
@@ -54,7 +54,7 @@ export const RadialStars = ({ className }: RadialStarsProps) => {
     );
   };
 
-  const animate = (
+  const animate = useCallback((
     ctx: CanvasRenderingContext2D,
     canvasWidth: number,
     canvasHeight: number
@@ -66,7 +66,7 @@ export const RadialStars = ({ className }: RadialStarsProps) => {
     }
 
     requestAnimationFrame(() => animate(ctx, canvasWidth, canvasHeight));
-  };
+  }, [createParticle]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -90,7 +90,7 @@ export const RadialStars = ({ className }: RadialStarsProps) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [animate]);
 
   return (
     <Motion

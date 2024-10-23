@@ -10,16 +10,14 @@ const VideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div
-      className="w-full h-full"
-      onClick={() => setIsPlaying(true)}
-    >
+    <div className="w-full h-full" onClick={() => setIsPlaying(true)}>
       {isPlaying ? (
         <iframe
+          src="https://iframe.mediadelivery.net/embed/293723/eb06de0c-b52f-497f-8016-14940dfe8a2c?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+          loading="lazy"
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+          allowFullScreen
           className="w-full h-full rounded-xl aspect-[16/8]"
-          src="https://www.youtube.com/embed/7fIC2LREfj8?si=A57AWc8vdMQ66b9e"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         />
       ) : (
         <>
