@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { techs } from "@/constants";
 import { SectionTitle } from "./section-title";
 import { Button } from "./button";
@@ -16,6 +17,7 @@ export const Stack = () => {
       <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {techs.map((tech, index) => (
           <Motion
+            key={`tech-stack-${index}`}
             as="a"
             // @ts-ignore
             href={tech.url}

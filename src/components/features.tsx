@@ -47,6 +47,7 @@ export const Features = () => {
       <div className="landing-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {features.map((feature, index) => (
           <Motion
+            key={`course-feature-${index}`}
             className="w-full p-6 rounded-xl bg-primary-800 border border-primary-700 relative hover:border-primary transition-colors"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -157,7 +157,7 @@ export const Structure = async () => {
 
         <div className="bg-primary-800 mt-4 border border-primary-700 rounded-xl p-4 sm:p-6 flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
           {infos.map((info) => (
-            <p className="text-sm sm:text-xl flex items-center gap-2">
+            <p key={`structure-info-${info.label}`} className="text-sm sm:text-xl flex items-center gap-2">
               <info.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
               <span className="font-bold">{info.value}</span> {info.label}
             </p>
