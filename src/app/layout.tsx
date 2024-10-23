@@ -11,8 +11,20 @@ const rethinkSans = Rethink_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Curso Next.js 14",
-  description: "Curso DevByGB",
+  title:
+    "Curso Next.js 14: Do Zero ao Deploy do ResumeCraft | Aprenda Tecnologias Modernas | DevByGB",
+  description:
+    "Aprenda Next.js na prática e crie o ResumeCraft, um criador de currículos interativo com autenticação, AI, PDFs e muito mais. Curso prático com suporte e certificado!",
+  keywords:
+    "Curso Next.js, aprender Next.js, criar currículos, desenvolvimento web, React, TypeScript, Tailwind CSS, ResumeCraft, desenvolvimento front-end, AI, geração de PDFs, Stripe, NextAuth, Drizzle ORM, curso online, certificado",
+  openGraph: {
+    title: "Curso Next.js 14: Crie o ResumeCraft com Tecnologias Modernas",
+    description:
+      "Curso prático para criar um projeto real de criador de currículos com Next.js, React, AI, e muito mais. Acesso vitalício, suporte e certificado!",
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -22,9 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={cn("antialiased", rethinkSans.variable)}
-      >
+      <body className={cn("antialiased", rethinkSans.variable)}>
         {children}
       </body>
     </html>
