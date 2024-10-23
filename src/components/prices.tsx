@@ -7,6 +7,7 @@ import { calculateInstallmentOptions } from "@/utils/functions";
 import { Button } from "./button";
 import { CHECKOUT_URLS } from "@/constants";
 import { Motion } from "./motion";
+import { LinkPhEvent } from "./link-ph-event";
 
 type CoursePrices = {
   pixPrice: number;
@@ -169,7 +170,7 @@ export const Prices = async () => {
                       </p>
                     )}
 
-                    <a href={pricing.checkoutUrl}>
+                    <LinkPhEvent href={pricing.checkoutUrl} event={`buy-button-${pricing.platform.toLowerCase()}`}>
                       <Button
                         className={cn(
                           "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10",
@@ -179,7 +180,7 @@ export const Prices = async () => {
                       >
                         Comprar agora
                       </Button>
-                    </a>
+                    </LinkPhEvent>
                   </div>
                 </div>
               </Motion>
