@@ -13,7 +13,7 @@ const VideoPlayer = () => {
     <div className="w-full h-full" onClick={() => setIsPlaying(true)}>
       {isPlaying ? (
         <iframe
-          src="https://iframe.mediadelivery.net/embed/293723/eb06de0c-b52f-497f-8016-14940dfe8a2c?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+          src="https://iframe.mediadelivery.net/embed/293723/fa838b96-74c6-4dd4-adbf-8bf802874c76?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
           loading="lazy"
           allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
           allowFullScreen
@@ -22,7 +22,7 @@ const VideoPlayer = () => {
       ) : (
         <>
           <Image
-            src="/demo-thumbnail.avif"
+            src="/demo-thumbnail.webp"
             alt="Thumbnail do vídeo de apresentação do projeto final."
             className="w-full h-full object-cover aspect-video sm:aspect-[16/8] rounded-xl group-hover:brightness-75 transition-all"
             width={1280}
