@@ -4,7 +4,6 @@ import { LuPlay } from "react-icons/lu";
 import { Button } from "../button";
 import { ComponentProps } from "react";
 import { cn } from "@/utils/tailwind";
-import posthog from "posthog-js";
 
 type StartButtonProps = ComponentProps<"button"> & {
   withIcon?: boolean;
@@ -12,7 +11,7 @@ type StartButtonProps = ComponentProps<"button"> & {
 
 export const StartButton = ({ className, withIcon = true, ...props }: StartButtonProps) => {
   const handleStart = () => {
-    posthog.capture('start-now-button', { property: 'value' })
+    window.umami.track('start-now-button')
 
     const element = document.getElementById("pricing");
 

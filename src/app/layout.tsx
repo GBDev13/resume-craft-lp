@@ -3,7 +3,7 @@ import { Rethink_Sans } from "next/font/google";
 
 import "@/styles/globals.css";
 import { cn } from "@/utils/tailwind";
-import { CSPostHogProvider } from "@/components/posthog";
+import { UmamiTracker } from "@/components/umami";
 
 const rethinkSans = Rethink_Sans({
   variable: "--font-sans",
@@ -35,11 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <CSPostHogProvider>
-        <body className={cn("antialiased", rethinkSans.variable)}>
-          {children}
-        </body>
-      </CSPostHogProvider>
+      <UmamiTracker />
+      <body className={cn("antialiased", rethinkSans.variable)}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -7,7 +7,7 @@ import { calculateInstallmentOptions } from "@/utils/functions";
 import { Button } from "./button";
 import { CHECKOUT_URLS } from "@/constants";
 import { Motion } from "./motion";
-import { LinkPhEvent } from "./link-ph-event";
+import { LinkEvent } from "./link-event";
 
 type CoursePrices = {
   pixPrice: number;
@@ -147,7 +147,9 @@ export const Prices = async () => {
                     alt={`Logo da plataforma ${pricing.platform}`}
                   />
 
-                  <p className="mt-6 mb-4 text-xs sm:text-base">{pricing.description}</p>
+                  <p className="mt-6 mb-4 text-xs sm:text-base">
+                    {pricing.description}
+                  </p>
 
                   <div className="z-[2]">
                     {pricing?.regularPrice &&
@@ -170,7 +172,10 @@ export const Prices = async () => {
                       </p>
                     )}
 
-                    <LinkPhEvent href={pricing.checkoutUrl} event={`buy-button-${pricing.platform.toLowerCase()}`}>
+                    <LinkEvent
+                      href={pricing.checkoutUrl}
+                      event={`buy-button-${pricing.platform.toLowerCase()}`}
+                    >
                       <Button
                         className={cn(
                           "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10",
@@ -180,7 +185,7 @@ export const Prices = async () => {
                       >
                         Comprar agora
                       </Button>
-                    </LinkPhEvent>
+                    </LinkEvent>
                   </div>
                 </div>
               </Motion>
