@@ -7,7 +7,7 @@ import { Motion } from "../motion";
 
 export const Hero = () => {
   return (
-    <section className="w-full h-screen relative overflow-hidden min-h-[730px]">
+    <section className="w-full min-h-[750px] h-screen max-h-[750px] sm:max-h-[900px] relative overflow-hidden flex flex-col">
       <Image
         src="/hero-top-bg.svg"
         width={1131}
@@ -30,7 +30,7 @@ export const Hero = () => {
           role="presentation"
           alt=""
           className={cn(
-            "object-center object-fill mix-blend-color-dodge z-[4]",
+            "object-center object-fill mix-blend-color-dodge z-[4] hidden sm:block",
             "-ml-32 lg:ml-0",
           )}
         />
@@ -42,7 +42,7 @@ export const Hero = () => {
           role="presentation"
           alt=""
           className={cn(
-            "scale-x-[-1] object-center object-fill mix-blend-color-dodge z-[4]",
+            "scale-x-[-1] object-center object-fill mix-blend-color-dodge z-[4] hidden sm:block",
             "-mr-32 lg:mr-0",
           )}
         />
@@ -68,7 +68,7 @@ export const Hero = () => {
         />
       </Motion>
 
-      <div className="z-[6] relative w-full h-full landing-container flex flex-col items-center pt-[25vh] text-center">
+      <div className="z-[6] flex-1 relative w-full h-full min-h-full landing-container flex flex-col items-center pt-[220px] text-center">
         <Motion
           className="mb-4"
           initial={{ opacity: 0, y: -20 }}
@@ -104,7 +104,7 @@ export const Hero = () => {
         </div>
 
         <Motion
-          className="mt-6"
+          className="my-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.8 }}
@@ -113,7 +113,7 @@ export const Hero = () => {
         </Motion>
 
         <Motion
-          className="mt-auto mb-[12vh] max-w-[320px] sm:max-w-[450px] md:max-w-[700px]"
+          className="mb-[10%] mt-auto max-w-[320px] sm:max-w-[450px] md:max-w-[700px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 1 }}
