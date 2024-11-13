@@ -93,5 +93,5 @@ export const techs = [
 
 export const CHECKOUT_URLS = {
   DEV_BY_GB: "https://devbygb.com/courses/next-14-na-pratica-crie-uma-aplicacao-full-stack/details?checkout=true",
-  UDEMY: "https://www.udemy.com/course/draft/6135423/?instructorPreviewMode=guest",
+  UDEMY: "https://www.udemy.com/course/nextjs-14-na-pratica-crie-uma-aplicacao-full-stack/?referralCode=1B79449C17A74BDB4743",
 }
