@@ -84,6 +84,7 @@ export const Prices = async () => {
         width: 180,
         height: 133,
       },
+      startingAt: true,
       price: 89.9,
       checkoutUrl: CHECKOUT_URLS.UDEMY,
     },
@@ -158,6 +159,11 @@ export const Prices = async () => {
                           {formatPrice(pricing.regularPrice)}
                         </span>
                       )}
+                    {pricing.startingAt && (
+                      <span className="text-sm text-text-secondary">
+                        A partir de
+                      </span>
+                    )}
                     <p
                       className={cn(
                         "font-bold text-5xl sm:text-6xl mt-1",
