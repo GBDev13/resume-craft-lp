@@ -7,9 +7,10 @@ import { cn } from "@/utils/tailwind";
 
 type StartButtonProps = ComponentProps<"button"> & {
   withIcon?: boolean;
+  text?: string;
 }
 
-export const StartButton = ({ className, withIcon = true, ...props }: StartButtonProps) => {
+export const StartButton = ({ className, withIcon = true, text = "Comece Agora", ...props }: StartButtonProps) => {
   const handleStart = () => {
     window.umami.track('start-now-button')
 
@@ -22,7 +23,7 @@ export const StartButton = ({ className, withIcon = true, ...props }: StartButto
 
   return (
     <Button {...props} className={cn("text-xl", className)} onClick={handleStart}>
-      Comece Agora
+      {text}
       {withIcon && <LuPlay />}
     </Button>
   );

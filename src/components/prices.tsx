@@ -68,30 +68,30 @@ export const Prices = async () => {
       highlighted: true,
       checkoutUrl: CHECKOUT_URLS.DEV_BY_GB,
     },
-    {
-      platform: "Udemy",
-      description: (
-        <>
-          <a className="font-medium underline" href="https://www.udemy.com">
-            Udemy
-          </a>{" "}
-          é uma plataforma online consolidada de cursos, mas com menos foco em
-          funcionalidades voltadas para o aluno.
-        </>
-      ),
-      logo: {
-        src: "/udemy.svg",
-        width: 180,
-        height: 133,
-      },
-      startingAt: true,
-      price: 89.9,
-      checkoutUrl: CHECKOUT_URLS.UDEMY,
-    },
+    // {
+    //   platform: "Udemy",
+    //   description: (
+    //     <>
+    //       <a className="font-medium underline" href="https://www.udemy.com">
+    //         Udemy
+    //       </a>{" "}
+    //       é uma plataforma online consolidada de cursos, mas com menos foco em
+    //       funcionalidades voltadas para o aluno.
+    //     </>
+    //   ),
+    //   logo: {
+    //     src: "/udemy.svg",
+    //     width: 180,
+    //     height: 133,
+    //   },
+    //   startingAt: true,
+    //   price: 89.9,
+    //   checkoutUrl: CHECKOUT_URLS.UDEMY,
+    // },
   ];
 
   return (
-    <section id="pricing" className="py-10 relative">
+    <section id="pricing" className="py-14 relative">
       <Image
         src="/pricing-section-bg.svg"
         width={1280}
@@ -101,12 +101,19 @@ export const Prices = async () => {
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
 
-      <SectionTitle
-        title="Comece agora mesmo"
-        description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
+      {/* TODO: remove it */}
+      <div
+        className="absolute inset-0 z-[2] w-full h-full bg-gradient-to-t from-transparent via-transparent to-background"
       />
 
-      <div className="landing-container relative z-[2]">
+      <SectionTitle
+        title="Comece agora mesmo"
+        // description="Projeto de qualidade com preço acessível, basta escolher a melhor opção para você."
+        description="Projeto de qualidade com preço acessível."
+        descriptionClassName="!max-w-full"
+      />
+
+      <div className="landing-container relative z-[3]">
         <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
           {prices.map((pricing, index) => {
             return (
@@ -114,7 +121,7 @@ export const Prices = async () => {
                 key={pricing.platform}
                 className={cn(
                   pricing.highlighted &&
-                    "bg-gradient-to-b from-primary to-primary/0 p-1 rounded-2xl"
+                    "bg-gradient-to-b from-yellow-400 to-yellow-400/0 p-1 rounded-2xl"
                 )}
                 initial={{ opacity: 0, y: -20, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -122,8 +129,9 @@ export const Prices = async () => {
                 transition={{ duration: 0.4, delay: 0.2 * index }}
               >
                 {pricing.highlighted && (
-                  <p className="w-full p-2 text-center font-bold">
-                    PROMOÇÃO DE LANÇAMENTO
+                  <p className="w-full p-2 text-center font-bold text-black">
+                    {/* PROMOÇÃO DE LANÇAMENTO */}
+                    PROMOÇÃO DE <b className="font-extrabold">BLACK FRIDAY</b>
                   </p>
                 )}
                 <div
@@ -159,7 +167,8 @@ export const Prices = async () => {
                           {formatPrice(pricing.regularPrice)}
                         </span>
                       )}
-                    {pricing.startingAt && (
+                    {/* @ts-ignore */}
+                    {pricing?.startingAt && (
                       <span className="text-sm text-text-secondary">
                         A partir de
                       </span>
@@ -185,6 +194,7 @@ export const Prices = async () => {
                       <Button
                         className={cn(
                           "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10",
+                          "bg-yellow-400 hover:bg-yellow-300 text-black animate-pulse-scale",
                           !pricing.highlighted &&
                             "border-primary bg-transparent text-primary border hover:bg-primary hover:text-white"
                         )}

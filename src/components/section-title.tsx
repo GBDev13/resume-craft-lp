@@ -6,9 +6,10 @@ type SectionTitleProps = {
   title: string;
   description: string;
   titleClassName?: string;
+  descriptionClassName?: string;
 }
 
-export const SectionTitle = ({ title, description, titleClassName }: SectionTitleProps) => {
+export const SectionTitle = ({ title, description, titleClassName, descriptionClassName }: SectionTitleProps) => {
   return (
     <div className="w-full max-w-[560px] mx-auto relative min-h-[240px] text-center flex flex-col items-center justify-center px-4">
       <RadialStars className="absolute inset-0 w-full h-full select-none" />
@@ -25,7 +26,10 @@ export const SectionTitle = ({ title, description, titleClassName }: SectionTitl
         </Motion>
         <Motion
           as="p"
-          className="text-text-secondary text-sm sm:text-base sm:max-w-[80%] mx-auto"
+          className={cn(
+            "text-text-secondary text-sm sm:text-base sm:max-w-[80%] mx-auto",
+            descriptionClassName
+          )}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}

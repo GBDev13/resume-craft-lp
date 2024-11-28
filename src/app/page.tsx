@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Prices } from "@/components/prices";
 import { Public } from "@/components/public";
+import { Reviews } from "@/components/reviews";
 import { Stack } from "@/components/stack";
 import { Structure } from "@/components/structure";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <DemoVideo />
       <Features />
       <Stack />
+      <Reviews />
       <Public />
       <Structure />
       <Guarantee />

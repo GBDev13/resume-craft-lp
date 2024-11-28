@@ -40,10 +40,25 @@ const config: Config = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0px" },
 				},
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+        "pulse-scale": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        }
 			},
 			animation: {
 				slideDown: "slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)",
 				slideUp: "slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "pulse-scale": "pulse-scale 1.5s infinite",
 			},
       screens: {
         'sm-mobile': '435px',
