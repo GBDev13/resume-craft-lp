@@ -121,7 +121,7 @@ export const Prices = async () => {
                 key={pricing.platform}
                 className={cn(
                   pricing.highlighted &&
-                    "bg-gradient-to-b from-yellow-400 to-yellow-400/0 p-1 rounded-2xl"
+                    "bg-gradient-to-b from-primary to-primary/0 p-1 rounded-2xl"
                 )}
                 initial={{ opacity: 0, y: -20, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -129,9 +129,8 @@ export const Prices = async () => {
                 transition={{ duration: 0.4, delay: 0.2 * index }}
               >
                 {pricing.highlighted && (
-                  <p className="w-full p-2 text-center font-bold text-black">
-                    {/* PROMOÇÃO DE LANÇAMENTO */}
-                    PROMOÇÃO DE <b className="font-extrabold">BLACK FRIDAY</b>
+                  <p className="w-full p-2 text-center font-bold">
+                    PROMOÇÃO DE LANÇAMENTO
                   </p>
                 )}
                 <div
@@ -194,7 +193,6 @@ export const Prices = async () => {
                       <Button
                         className={cn(
                           "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10",
-                          "bg-yellow-400 hover:bg-yellow-300 text-black animate-pulse-scale",
                           !pricing.highlighted &&
                             "border-primary bg-transparent text-primary border hover:bg-primary hover:text-white"
                         )}
