@@ -24,6 +24,11 @@ export const Reviews = () => {
       content: "Eu já conhecia os projetos do Gabriel através do seu canal GBDev no Youtube. O Gabriel tem uma didática incrível e os seus projetos são bem elaborados com as maiores expertises de um bom Desenvolvedor. Super recomendo!",
     },
     {
+      name: "Gabriel Dias",
+      photo: "gabriel-dias.webp",
+      content: "Gostei muito do curso, muito prático e direto ao ponto. Aprendi muitas coisas que irei implementar nos meus projetos daqui para frente. Vlw GB!"
+    },
+    {
       name: "Kauani Evangelista",
       photo: "kauani.webp",
       content:
@@ -50,7 +55,7 @@ export const Reviews = () => {
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
       >
-        <Marquee pauseOnHover className="[--duration:50s] [--gap:2rem]">
+        <Marquee pauseOnHover className="[--duration:75s] [--gap:2rem]">
           {reviews.map((review) => (
             <div
               key={`review-item-${review.name}`}
