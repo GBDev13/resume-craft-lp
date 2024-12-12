@@ -4,6 +4,7 @@ import { Rethink_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { cn } from "@/utils/tailwind";
 import { UmamiTracker } from "@/components/umami";
+import { ClarityTracker } from "@/components/clarity";
 
 const rethinkSans = Rethink_Sans({
   variable: "--font-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <UmamiTracker />
+      <ClarityTracker />
       <body className={cn("antialiased", rethinkSans.variable)}>
         {children}
       </body>
