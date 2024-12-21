@@ -6,6 +6,8 @@ import { cn } from "@/utils/tailwind";
 import { UmamiTracker } from "@/components/umami";
 import { ClarityTracker } from "@/components/clarity";
 
+import { Snow } from "@/components/snow";
+
 const rethinkSans = Rethink_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -36,6 +38,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <Snow />
+
       <UmamiTracker />
       <ClarityTracker />
       <body className={cn("antialiased", rethinkSans.variable)}>
