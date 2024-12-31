@@ -5,7 +5,7 @@ import { StartButton } from "./hero/start-button";
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/utils/tailwind";
 import { Motion } from "./motion";
-import { ChristmasBanner } from "./christmas-banner";
+import { NewYearBanner } from "./new-year-banner";
 
 export const Header = () => {
   const [shouldShowBackground, setShouldShowBackground] = useState(false);
@@ -52,12 +52,12 @@ export const Header = () => {
 
           <StartButton
             withIcon={false}
-            className="m-0 text-sm sm:text-base py-2 px-3 sm:px-4 bg-[#FF3A30] hover:bg-red-500 text-black font-black uppercase animate-pulse-scale"
+            className="m-0 text-sm sm:text-base py-2 px-3 sm:px-4 bg-gold hover:bg-yellow-500 text-black font-black uppercase animate-pulse-scale"
             text="Resgatar oferta"
           />
         </Motion>
       </header>
-      <ChristmasBanner />
+      <NewYearBanner />
     </div>
   );
 };

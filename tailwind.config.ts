@@ -12,7 +12,7 @@ const config: Config = {
         sans: "var(--font-sans)",
       },
       colors: {
-        christmas: "#FF3A30",
+        gold: "#CDA54E",
         background: {
           DEFAULT: "#00020f",
         },

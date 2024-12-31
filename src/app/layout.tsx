@@ -5,8 +5,7 @@ import "@/styles/globals.css";
 import { cn } from "@/utils/tailwind";
 import { UmamiTracker } from "@/components/umami";
 import { ClarityTracker } from "@/components/clarity";
-
-import { Snow } from "@/components/snow";
+import { NewYearFireWorks } from "@/components/new-year-fireworks";
 
 const rethinkSans = Rethink_Sans({
   variable: "--font-sans",
@@ -38,8 +37,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <Snow />
-
+      <NewYearFireWorks />
+      
       <UmamiTracker />
       <ClarityTracker />
       <body className={cn("antialiased", rethinkSans.variable)}>

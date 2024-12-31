@@ -121,7 +121,7 @@ export const Prices = async () => {
                 key={pricing.platform}
                 className={cn(
                   pricing.highlighted &&
-                    "bg-gradient-to-b from-christmas to-christmas/0 p-1 rounded-2xl"
+                    "bg-gradient-to-b from-gold to-gold/0 p-1 rounded-2xl"
                 )}
                 initial={{ opacity: 0, y: -20, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -129,8 +129,8 @@ export const Prices = async () => {
                 transition={{ duration: 0.4, delay: 0.2 * index }}
               >
                 {pricing.highlighted && (
-                  <p className="w-full p-2 text-center font-bold">
-                    PROMOÇÃO DE NATAL
+                  <p className="w-full p-2 text-center font-extrabold text-black">
+                    PROMOÇÃO DE ANO NOVO
                   </p>
                 )}
                 <div
@@ -175,7 +175,7 @@ export const Prices = async () => {
                     <p
                       className={cn(
                         "font-bold text-5xl sm:text-6xl mt-1",
-                        !pricing.highlighted && "text-christmas"
+                        !pricing.highlighted && "text-gold"
                       )}
                     >
                       {formatPrice(pricing.price)}
@@ -192,9 +192,9 @@ export const Prices = async () => {
                     >
                       <Button
                         className={cn(
-                          "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10 bg-christmas hover:bg-red-500",
+                          "justify-center text-xl font-bold mt-6 mx-auto px-6 sm:px-10 bg-gold hover:bg-yellow-500",
                           !pricing.highlighted &&
-                            "border-christmas bg-transparent text-christmas border hover:bg-christmas hover:text-white"
+                            "border-gold bg-transparent text-gold border hover:bg-gold hover:text-white"
                         )}
                       >
                         Comprar agora
